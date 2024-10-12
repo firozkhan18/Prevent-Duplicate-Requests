@@ -465,7 +465,7 @@ public class Utils {
 
 In the main controller, we use the `PreventDuplicateValidator` annotation with the following parameters:
 - **includeFieldKeys**: Using `productId` and `transactionId` from the request body to generate the key.
-- **optionalValues**: Declaring an optional value, "CAFEINCODE".
+- **optionalValues**: Declaring an optional value, "PINCODE".
 - **expireTime**: Setting the Redis cache lifetime to 40 seconds.
 
 The class Utils includes logic functions to extract the request body from ProceedingJoinPoint and the MD5 hash function
@@ -494,7 +494,7 @@ services:
 In this main controller section, declare to use annotation with the parameter values above: PreventDuplicateValidator
 
 **includeFieldKeys**: markup will take two fields productIdand transactionId in the request body as input to generate key
-**optionalValues**: option value, I declare here CAFEINCODE
+**optionalValues**: option value, I declare here PINCODE
 **expireTime**: data lifetime in Redis cache, I set it to 40 seconds.
 
 ```java
@@ -521,7 +521,7 @@ public class ProductController {
     @PostMapping
     @PreventDuplicateValidator(
         includeFieldKeys = {"productId", "transactionId"},
-        optionalValues = {"CAFEINCODE"},
+        optionalValues = {"PINCODE"},
         expireTime = 40_000L)
     public BaseResponse<?> createProduct(@RequestBody ProductDto request) {
         return BaseResponse.ofSucceeded(productService.createProduct(request));
@@ -542,8 +542,8 @@ public class ProductController {
 
    ```json
    {
-       "productId": "hungtv27-test-001",
-       "productName": "CAFEINCODE",
+       "productId": "test-001",
+       "productName": "PINCODE",
        "productDescription": "Threat identify buy war manage little friend south really chair",
        "transactionId": "cd076846-ff28-4307-8524-3eb6e1809838",
        "requestTime": 1696069378367,
@@ -715,8 +715,8 @@ Your Spring Boot application setup for preventing duplicate requests using Redis
    - For example:
      ```bash
      curl -X POST http://localhost:8888/your-endpoint -H "Content-Type: application/json" -d '{
-         "productId": "hungtv27-test-001",
-         "productName": "CAFEINCODE",
+         "productId": "test-001",
+         "productName": "PINCODE",
          "productDescription": "Sample Description",
          "transactionId": "your-transaction-id",
          "requestTime": 1696069378367,
@@ -752,8 +752,8 @@ If you want to send this JSON as part of an API request, you can use tools like 
 curl -X POST http://localhost:8888/api/products \
 -H "Content-Type: application/json" \
 -d '{
-    "productId": "hungtv27-test-001",
-    "productName": "CAFEINCODE",
+    "productId": "test-001",
+    "productName": "PINCODE",
     "productDescription": "Threat identify buy war manage little friend south really chair",
     "transactionId": "cd076846-ff28-4307-8524-3eb6e1809838",
     "requestTime": 1696069378367,
