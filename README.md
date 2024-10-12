@@ -11,6 +11,40 @@ The approach involves the following steps:
 3. Check if the Redis key exists on every API call. If it does, return a duplicate data error. If not, continue processing the logic.
 4. Set an expiration time for the Redis key. In this Microservice we are using 40-second expiration.
 
+Here's a flow diagram to illustrate the interactions between the `demo-service-redis` and the `product-service` for preventing duplicate requests. 
+
+```mermaid
+graph TD
+    A[Client Request] -->|POST /api/products| B[Product Service]
+    B -->|Extract Request Body| C[Request Body]
+    C -->|Convert to Map| D[Request Body Map]
+    D -->|Build Redis Key| E[Redis Key]
+    E -->|Generate MD5 Hash| F[MD5 Key]
+    
+    F -->|Check Redis for Key| G[Check Redis]
+    G -->|Key Exists?| H{Yes}
+    H -->|Return Error| I[Error: Duplicate Request]
+    H -->|No| J[Proceed with Processing]
+    
+    J -->|Store in Redis| K[Store MD5 Key with Expiration]
+    K -->|Process Request| L[Response to Client]
+    
+    G -->|Log Action| M[Log: Key Check]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px;
+    style B fill:#bbf,stroke:#333,stroke-width:2px;
+    style K fill:#bfb,stroke:#333,stroke-width:2px;
+```
+
+### Explanation:
+- **Client Request**: The client sends a POST request to the product service.
+- **Product Service**: This service extracts the request body and converts it into a map.
+- **Redis Key**: A unique key is generated based on the request parameters.
+- **MD5 Key**: This key is hashed to create a unique identifier for checking duplicates.
+- **Check Redis**: The service checks Redis to see if the key already exists.
+- **Duplicate Check**: If the key exists, an error response is sent back to the client; otherwise, the request proceeds.
+- **Store in Redis**: The new key is stored in Redis with an expiration time to prevent future duplicates.
+
 ## Project Structure
 
 We will use:
