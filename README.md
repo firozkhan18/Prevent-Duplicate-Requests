@@ -9,7 +9,7 @@ The approach involves the following steps:
 1. Extract data fields from the Request Body to create a Redis key. The choice of fields depends on business needs and system architecture.
 2. Build the key in an optional format and hash it using MD5 (using Fast MD5 for better performance is also an option).
 3. Check if the Redis key exists on every API call. If it does, return a duplicate data error. If not, continue processing the logic.
-4. Set an expiration time for the Redis key. In this demo, we'll use a 40-second expiration.
+4. Set an expiration time for the Redis key. In this we are using 40-second expiration.
 
 ## Project Structure
 
