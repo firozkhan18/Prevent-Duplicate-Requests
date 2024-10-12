@@ -2,8 +2,6 @@
 
 Preventing duplicate requests is crucial when users manipulate an API feed or any data source. Even if a user only intends to perform an action once, various reasons—intentional or unintentional—can lead to duplicate requests and cause data errors. 
 
-In this article, we’ll implement a deduplication solution using Redis and Spring Boot 3.
-
 ## Overview
 
 The approach involves the following steps:
