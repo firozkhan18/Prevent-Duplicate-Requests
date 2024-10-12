@@ -11,7 +11,7 @@ The approach involves the following steps:
 3. Check if the Redis key exists on every API call. If it does, return a duplicate data error. If not, continue processing the logic.
 4. Set an expiration time for the Redis key. In this Microservice we are using 40-second expiration.
 
-- Here's a flow diagram to illustrate the interactions between the `demo-service-redis` and the `product-service` for preventing duplicate requests. 
+- Here's a flow diagram to illustrate the interactions between the `redis` and the `product-service` for preventing duplicate requests. 
 
 ```mermaid
 graph TD
