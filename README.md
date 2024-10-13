@@ -351,6 +351,8 @@ public enum ErrorCode {
     private final String code;
     private final String message;
 }
+
+
 package com.springboot.microservice.exception;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -373,8 +375,9 @@ public class DuplicationException extends RuntimeException {
         this.message = message;
         httpStatus = HttpStatus.BAD_REQUEST;
     }
-
 }
+
+
 package com.springboot.microservice.exception;
 import java.util.HashMap;
 import java.util.Map;
@@ -412,8 +415,9 @@ import com.springboot.microservice.dto.ProductDto;
 public interface IProductService {
 
     ProductDto createProduct(ProductDto dto);
-
 }
+
+
 package com.springboot.microservice.service;
 import com.springboot.microservice.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
@@ -506,6 +510,8 @@ In the main controller, we use the `PreventDuplicateValidator` annotation with t
 
 The class Utils includes logic functions to extract the request body from ProceedingJoinPoint and the MD5 hash function
 
+### Configure application.yml
+
 ```yaml
 redis:
   host: localhost
@@ -516,7 +522,8 @@ spring:
 server:
   port: 8888
 ```
-configure application-local.yml
+
+### Configure docker-compose.yml
 
 ```yaml
 version: "3.2"
@@ -527,6 +534,7 @@ services:
     ports:
       - '6379:6379'
 ```
+
 In this main controller section, declare to use annotation with the parameter values above: PreventDuplicateValidator
 
 **includeFieldKeys**: markup will take two fields productIdand transactionId in the request body as input to generate key
@@ -562,9 +570,9 @@ public class ProductController {
     public BaseResponse<?> createProduct(@RequestBody ProductDto request) {
         return BaseResponse.ofSucceeded(productService.createProduct(request));
     }
-
 }
 ```
+
 ### Running the Project
 
 1. For MacOS and Windows, ensure Docker Desktop is running and execute:
