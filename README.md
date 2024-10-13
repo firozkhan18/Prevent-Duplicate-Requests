@@ -584,8 +584,11 @@ public class ProductController {
    ```bash
    docker-compose up -d
    ```
-   
+![Desktop Screenshot](images/redis-8.PNG)
+
 2. For Ubuntu, install Docker first, then run the above command.
+
+![Desktop Screenshot](images/redis-4.PNG)
 
 3. Use Postman to test the API with the following request body:
 
@@ -599,6 +602,8 @@ public class ProductController {
        "requestId": "{{$randomUUID}}"
    }
    ```
+
+![Desktop Screenshot](images/redis-2.PNG)
 
 ### Testing the API
 
