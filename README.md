@@ -590,6 +590,10 @@ public class ProductController {
 
 ![Desktop Screenshot](images/redis-1.PNG)
 
+### Start the Application
+
+![Desktop Screenshot](images/rdi.PNG)
+
 3. Use Postman to test the API with the following request body:
 
    ```json
@@ -602,9 +606,6 @@ public class ProductController {
        "requestId": "{{$randomUUID}}"
    }
    ```
-
-![Desktop Screenshot](images/rdi.PNG)
-
 ### Testing the API
 
 **First Call:**
