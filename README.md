@@ -588,7 +588,7 @@ public class ProductController {
 
 2. For Ubuntu, install Docker first, then run the above command.
 
-![Desktop Screenshot](images/redis-4.PNG)
+![Desktop Screenshot](images/redis-1.PNG)
 
 3. Use Postman to test the API with the following request body:
 
@@ -603,7 +603,7 @@ public class ProductController {
    }
    ```
 
-![Desktop Screenshot](images/redis-2.PNG)
+![Desktop Screenshot](images/rdi.PNG)
 
 ### Testing the API
 
@@ -611,8 +611,12 @@ public class ProductController {
 - Validate success, initialize the key in Redis.
 - Console log: "MD5 key: 6C518A2B1666005572EDFC8240A130F2 does not exist in Redis".
 
+![Desktop Screenshot](images/redis-2.PNG)
+
 **Second Call:**
 - Console log: Check if the key exists. If it does, return error `CF_275` to the client.
+
+![Desktop Screenshot](images/redis-4.PNG)
 
 ### Conclusion
 
