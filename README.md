@@ -49,10 +49,13 @@ graph TD
 
 ## Project Structure
 
-We will use:
+**Prerequisite**:
+
 - Spring Boot 3.3.4
 - Java 17
 - Spring AOP
+- Docker
+- Redis
 
 ### Implementation
 
