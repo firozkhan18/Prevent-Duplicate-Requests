@@ -57,6 +57,8 @@ graph TD
 - Docker
 - Redis
 
+![Desktop Screenshot](images/structure.PNG)
+
 ### Implementation
 
 Here is the detailed code implementation of each part
